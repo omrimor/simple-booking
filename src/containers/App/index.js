@@ -6,19 +6,26 @@
  */
 
 import React from 'react';
-import { Switch, Route, Redirect, BrowserRouter as Router, } from 'react-router-dom';
+import { Switch, Route, BrowserRouter as Router, } from 'react-router-dom';
 
 import Accomodations from 'containers/Accomodations';
+import SingleAccomodation from 'containers/SingleAccomodation';
+
+const Defaultlayout = ({ component: Component, ...rest }) => {
+  return (
+    <Route {...rest} render={matchProps => (
+        <Component {...matchProps} />
+    )} />
+  )
+};
 
 export default function App() {
   return (
     <Router>
-      <div className="container">
+      <div>
         <Switch>
-          <Route exact path='/' render={() => {
-          return <Redirect to='/accomodations' />
-          }} />
-          <Route exact path="/accomodations" component={Accomodations} />
+          <Defaultlayout exact path='/' component={Accomodations} />
+          <Defaultlayout path='/:id' component={SingleAccomodation} />
         </Switch>
       </div>
     </Router>

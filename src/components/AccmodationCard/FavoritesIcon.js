@@ -1,9 +1,15 @@
 import React from 'react';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 import withFeatureFlag from 'components/enhancers/withFeatureFlag';
 
-const FavoritesIcon = ({ handleFavoriteClick, isFavorite }) => {
+const propTypes = {
+  handleFavoriteClick: PropTypes.func.isRequired,
+  isFavorite: PropTypes.bool.isRequired,
+};
+
+export const FavoritesIcon = ({ handleFavoriteClick, isFavorite }) => {
   const iconClass = classNames({
     'icon': true,
     'has-text-grey-light': !isFavorite,
@@ -17,5 +23,7 @@ const FavoritesIcon = ({ handleFavoriteClick, isFavorite }) => {
     </a>
   );
 };
+
+FavoritesIcon.propTypes = propTypes;
 
 export default withFeatureFlag('isFavoritesEnable')(FavoritesIcon)

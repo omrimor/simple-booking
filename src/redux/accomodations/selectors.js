@@ -6,6 +6,8 @@ import { selectCountryFilter } from 'redux/ui/selectors';
 
 const accomodations = state => values(state.accomodations) || [];
 
+export const singleAccomodationSelector = (state, id) => state.accomodations[id] || {};
+
 export const accomodationsFilterSelector = state =>
   values(state.accomodations).reduce((acc, currentValue) => {
     (!includes(acc, currentValue.country)) && acc.push(currentValue.country);

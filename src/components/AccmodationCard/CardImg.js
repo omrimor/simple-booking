@@ -1,4 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+const propTypes = {
+  image: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+};
 
 const CardImg = ({ image, name }) => {
   return (
@@ -9,5 +15,7 @@ const CardImg = ({ image, name }) => {
     </div>
   );
 };
+
+CardImg.propTypes = propTypes;
 
 export default CardImg;

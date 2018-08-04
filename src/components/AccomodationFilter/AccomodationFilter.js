@@ -1,5 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
+
+const propTypes = {
+  options: PropTypes.array.isRequired,
+  handleFilterChange: PropTypes.func.isRequired,
+  selectedValue: PropTypes.string.isRequired,
+};
 
 const AccomodationFilter = ({ options, handleFilterChange, selectedValue }) => {
   return (
@@ -35,4 +42,5 @@ function enhanceOptions(options) {
     }, []);
   }
 
+AccomodationFilter.propTypes = propTypes;
 export default AccomodationFilter;

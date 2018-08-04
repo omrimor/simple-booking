@@ -1,35 +1,30 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import './CardInfo.css';
-// import classNames from 'classnames';
-// import withFeatureFlag from 'components/enhancers/withFeatureFlag';
 import FavoritesIcon from './FavoritesIcon';
 
-const CardInfo = ({ name, isFavorite, handleFavoriteClick }) => {
-  // const iconClass = classNames({
-  //   ['icon']: true,
-  //   ['has-text-grey-light']: !isFavorite,
-  //   ['has-text-danger']: isFavorite
-  // });
-  // const onSuccess = () => (
-  //   <a className="button" onClick={handleFavoriteClick}>
-  //     <span className={iconClass}>
-  //       <i className='fa-heart fas' />
-  //     </span>
-  //   </a>
-  // );
+const propTypes = {
+  name: PropTypes.string.isRequired,
+  isFavorite: PropTypes.bool.isRequired,
+  handleFavoriteClick: PropTypes.func.isRequired,
+};
+
+export const CardInfo = ({ name, isFavorite, handleFavoriteClick }) => {
   return (
     <div className="card-info-wrapper is-clearfix">
       <div className="is-pulled-left">
-        <p className="title is-4">
+        <p className="title is-4 has-text-white is-uppercase has-text-weight-bold">
           {name}
         </p>
       </div>
       <div className="is-pulled-right">
         <FavoritesIcon handleFavoriteClick={handleFavoriteClick} isFavorite={isFavorite}/>
-        {/*{withFeatureFlag('isFavoritesEnable')(<FavoritesIcon handleFavoriteClick={handleFavoriteClick} isFavorite={isFavorite}/>, <div />)}*/}
       </div>
     </div>
   );
 };
+
+CardInfo.propTypes = propTypes;
 
 export default CardInfo;
